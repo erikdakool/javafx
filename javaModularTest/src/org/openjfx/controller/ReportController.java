@@ -35,15 +35,11 @@ public class ReportController {
 
     @FXML
     private TableView<LogModel> logTable = new TableView<LogModel>();
-    private final ObservableList<LogModel> data = FXCollections.observableArrayList(
-            new LogModel("1", "2", "a custom description!", "act0", "cc01"),
-            new LogModel("2", "3", "a custom description!", "act0", "cc01"),
-            new LogModel("3", "4", "a custom description!", "act0", "cc01")
-    );
+    private final ObservableList<LogModel> data = FXCollections.observableArrayList();
 
     public void initialize() {
         projectName.setText("Project::name");
-        from.setCellValueFactory(new PropertyValueFactory<LogModel, String>("from"));
+        from.setCellValueFactory(new PropertyValueFactory<>("from"));
         to.setCellValueFactory(new PropertyValueFactory<LogModel, String>("to"));
         desc.setCellValueFactory(new PropertyValueFactory<LogModel, String>("description"));
         act.setCellValueFactory(new PropertyValueFactory<LogModel, String>("actID"));
@@ -51,13 +47,10 @@ public class ReportController {
 
         logTable.setItems(data);
 
-        addButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                addLogEntry();
-                System.out.println("Adding to table!");
-                logTable.setItems(data);
-            }
+        addButton.setOnMouseClicked(mouseEvent -> {
+            addLogEntry();
+            System.out.println("Adding to table!");
+            logTable.setItems(data);
         });
     }
     public void addLogEntry() {

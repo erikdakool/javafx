@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -17,6 +18,7 @@ public class MainApp extends Application {
          //scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         stage.setTitle("DPR Software Prototype");
+        stage.getIcons().add(new Image(MainApp.class.getResourceAsStream( "image/deepoceanicon.png" )));
         stage.setScene(scene);
         stage.show();
     }
