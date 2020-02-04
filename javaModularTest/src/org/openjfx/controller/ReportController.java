@@ -13,7 +13,8 @@ import org.openjfx.model.LogModel;
 public class ReportController {
 
 
-    public TextField addFrom;
+    @FXML
+    private TextField addFrom;
     public TextField addTo;
     public TextField addDesc;
     public TextField addAct;
