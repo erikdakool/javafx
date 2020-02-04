@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,23 +21,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ReportController">
+<StackPane prefHeight="616.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.ReportController">
     <children>
         <VBox prefHeight="600.0" prefWidth="900.0">
             <children>
                 <AnchorPane maxHeight="-Infinity" prefHeight="94.0" prefWidth="1036.0">
                     <children>
-                        <SplitPane dividerPositions="0.9" prefHeight="112.0" prefWidth="898.0" stylesheets="@bootstrap3.css" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+                        <SplitPane dividerPositions="0.9" prefHeight="112.0" prefWidth="898.0" stylesheets="@stylesheet/bootstrap3.css" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
                             <items>
                                 <Pane>
                                     <children>
                                         <DatePicker layoutX="14.0" layoutY="40.0" promptText="Select date" />
-                                        <Label fx:id="projectName" id="h1" layoutX="497.0" layoutY="32.0" styleClass="title" stylesheets="@bootstrap3.css" >
+                                        <Label fx:id="projectName" layoutX="497.0" layoutY="32.0" styleClass="title" stylesheets="@stylesheet/bootstrap3.css">
                                             <font>
                                                 <Font size="31.0" />
                                             </font>
                                         </Label>
-                                        <MenuButton layoutX="218.0" layoutY="39.0" mnemonicParsing="false" styleClass="default" stylesheets="@bootstrap3.css" text="Select action">
+                                        <MenuButton layoutX="218.0" layoutY="39.0" mnemonicParsing="false" styleClass="default" stylesheets="@stylesheet/bootstrap3.css" text="Select action">
                                             <items>
                                                 <MenuItem mnemonicParsing="false" text="Preview Report" />
                                                 <MenuItem mnemonicParsing="false" text="Print Report" />
@@ -49,7 +50,7 @@
                                 </Pane>
                                 <Pane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0">
                                     <children>
-                                        <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="16.0" layoutY="39.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="69.0" styleClass="success" stylesheets="@bootstrap3.css" text="Sync">
+                                        <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="16.0" layoutY="39.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="69.0" styleClass="success" stylesheets="@stylesheet/bootstrap3.css" text="Sync">
                                             <tooltip>
                                                 <Tooltip text="Synchronize with main database" />
                                             </tooltip>
@@ -61,7 +62,7 @@
                         </SplitPane>
                     </children>
                 </AnchorPane>
-                <SplitPane dividerPositions="0.26280623608017817" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@bootstrap3.css" VBox.vgrow="ALWAYS">
+                <SplitPane dividerPositions="0.26280623608017817" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@stylesheet/bootstrap3.css" VBox.vgrow="ALWAYS">
                     <items>
                         <Pane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="245.0">
                             <children>
@@ -86,7 +87,7 @@
                                 </Accordion>
                             </children>
                         </Pane>
-                        <TabPane styleClass="action-btn" stylesheets="@bootstrap3.css" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane styleClass="action-btn" stylesheets="@stylesheet/bootstrap3.css" tabClosingPolicy="UNAVAILABLE">
                             <tabs>
                                 <Tab text="Log">
                                     <content>
@@ -102,7 +103,12 @@
                                                         <TableColumn fx:id="cost" minWidth="80.0" prefWidth="-1.0" resizable="false" text="CostCode" />
                                                     </columns>
                                                 </TableView>
-                                    <Button layoutX="548.0" layoutY="410.0" mnemonicParsing="false" styleClass="primary" text="Add Entry" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0" />
+                                    <Button fx:id="addButton" layoutX="548.0" layoutY="410.0" mnemonicParsing="false" styleClass="primary" text="Add Entry" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0" />
+                                    <TextField fx:id="addFrom" layoutX="10.0" layoutY="408.0" prefWidth="69.0" AnchorPane.bottomAnchor="11.0" />
+                                    <TextField fx:id="addTo" layoutX="79.0" layoutY="408.0" prefWidth="69.0" AnchorPane.bottomAnchor="11.0" />
+                                    <TextField fx:id="addDesc" layoutX="148.0" layoutY="408.0" prefWidth="251.0" AnchorPane.bottomAnchor="11.0" />
+                                    <TextField fx:id="addAct" layoutX="399.0" layoutY="408.0" prefWidth="69.0" AnchorPane.bottomAnchor="11.0" />
+                                    <TextField fx:id="addCost" layoutX="468.0" layoutY="408.0" prefWidth="69.0" AnchorPane.bottomAnchor="11.0" />
                                             </children>
                                         </AnchorPane>
                                     </content>
@@ -139,7 +145,7 @@
                                 </Tab>
                                 <Tab text="HSE Summary">
                                     <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" stylesheets="@bootstrap3.css" />
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" stylesheets="@stylesheet/bootstrap3.css" />
                                     </content>
                                 </Tab>
                                 <Tab text="Equipment">

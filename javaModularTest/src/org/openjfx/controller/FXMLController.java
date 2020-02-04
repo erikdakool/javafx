@@ -1,7 +1,8 @@
-package org.openjfx;
+package org.openjfx.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.openjfx.model.FXmodel;
 
 public class FXMLController {
     
