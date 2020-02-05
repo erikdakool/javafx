@@ -7,21 +7,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import org.openjfx.model.LogModel;
 
 
 public class ReportController {
 
-
     @FXML
     private TextField addFrom;
     public TextField addTo;
-    public TextField addDesc;
+    public TextArea addDesc;
     public TextField addAct;
     public TextField addCost;
     public Button addButton;
-    @FXML
-    private Label projectName;
+
     @FXML
     private TableColumn<LogModel, String> from;
     @FXML
@@ -38,12 +38,11 @@ public class ReportController {
     private final ObservableList<LogModel> data = FXCollections.observableArrayList();
 
     public void initialize() {
-        projectName.setText("Project::name");
         from.setCellValueFactory(new PropertyValueFactory<>("from"));
-        to.setCellValueFactory(new PropertyValueFactory<LogModel, String>("to"));
-        desc.setCellValueFactory(new PropertyValueFactory<LogModel, String>("description"));
-        act.setCellValueFactory(new PropertyValueFactory<LogModel, String>("actID"));
-        cost.setCellValueFactory(new PropertyValueFactory<LogModel, String>("costCode"));
+        to.setCellValueFactory(new PropertyValueFactory<>("to"));
+        desc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        act.setCellValueFactory(new PropertyValueFactory<>("actID"));
+        cost.setCellValueFactory(new PropertyValueFactory<>("costCode"));
 
         logTable.setItems(data);
 

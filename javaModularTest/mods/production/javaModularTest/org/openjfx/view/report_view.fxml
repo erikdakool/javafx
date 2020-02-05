@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,23 +19,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="616.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.ReportController">
+<StackPane prefHeight="616.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller._partialViewController">
     <children>
         <VBox prefHeight="600.0" prefWidth="900.0">
             <children>
                 <AnchorPane maxHeight="-Infinity" prefHeight="94.0" prefWidth="1036.0">
                     <children>
-                        <SplitPane dividerPositions="0.9" prefHeight="112.0" prefWidth="898.0" stylesheets="@../stylesheet/bootstrap3.css" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+                        <SplitPane prefHeight="112.0" prefWidth="898.0" stylesheets="@../stylesheet/bootstrap3.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <items>
-                                <Pane>
-                                    <children>
-                                        <DatePicker layoutX="14.0" layoutY="40.0" promptText="Select date" />
-                                        <Label fx:id="projectName" layoutX="497.0" layoutY="32.0" styleClass="title" stylesheets="@../stylesheet/bootstrap3.css">
+                        <AnchorPane style="-fx-background-color: lightgray;" stylesheets="@../stylesheet/bootstrap3.css">
+                           <children>
+                                        <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="962.0" layoutY="30.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="58.0" styleClass="success" stylesheets="@../stylesheet/bootstrap3.css" text="Sync" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0">
+                                            <tooltip>
+                                                <Tooltip text="Synchronize with main database" />
+                                            </tooltip>
+                                 <padding>
+                                    <Insets bottom="14.0" top="14.0" />
+                                 </padding>
+                                        </Button>
+                                        <DatePicker layoutX="14.0" layoutY="65.0" promptText="Select date" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+                                        <Label fx:id="projectName" layoutX="517.0" layoutY="32.0" styleClass="title" stylesheets="@../stylesheet/bootstrap3.css" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0">
                                             <font>
-                                                <Font size="31.0" />
+                                                <Font size="20.0" />
                                             </font>
                                         </Label>
-                                        <MenuButton layoutX="218.0" layoutY="39.0" mnemonicParsing="false" styleClass="default" stylesheets="@../stylesheet/bootstrap3.css" text="Select action">
+                              <Label text="Contract:" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="14.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="contractName" layoutX="527.0" layoutY="42.0" styleClass="title" stylesheets="@../stylesheet/bootstrap3.css" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="14.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="460.0" layoutY="65.0" text="Vessel:" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="460.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="vesselName" layoutX="527.0" layoutY="42.0" styleClass="title" stylesheets="@../stylesheet/bootstrap3.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="550.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                                        <MenuButton layoutX="206.0" layoutY="64.0" mnemonicParsing="false" styleClass="default" stylesheets="@../stylesheet/bootstrap3.css" text="Select action" AnchorPane.bottomAnchor="14.0">
                                             <items>
                                                 <MenuItem mnemonicParsing="false" text="Preview Report" />
                                                 <MenuItem mnemonicParsing="false" text="Print Report" />
@@ -48,39 +71,45 @@
                                                 <MenuItem mnemonicParsing="false" text="New Report" />
                                             </items>
                                         </MenuButton>
-                                        <Button layoutX="370.0" layoutY="39.0" mnemonicParsing="false" styleClass="warning" text="Execute" />
-                                    </children>
-                                </Pane>
-                                <Pane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0">
-                                    <children>
-                                        <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="16.0" layoutY="39.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="69.0" styleClass="success" stylesheets="@../stylesheet/bootstrap3.css" text="Sync">
-                                            <tooltip>
-                                                <Tooltip text="Synchronize with main database" />
-                                            </tooltip>
-                                        </Button>
-                                        <ProgressBar layoutX="10.0" layoutY="21.0" prefHeight="18.0" prefWidth="81.0" progress="0.0" />
-                                    </children>
-                                </Pane>
+                                        <Button layoutX="333.0" layoutY="64.0" mnemonicParsing="false" styleClass="warning" text="Execute" AnchorPane.bottomAnchor="14.0" />
+                           </children>
+                        </AnchorPane>
                             </items>
                         </SplitPane>
                     </children>
                 </AnchorPane>
                 <SplitPane dividerPositions="0.26280623608017817" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@../stylesheet/bootstrap3.css" VBox.vgrow="ALWAYS">
                     <items>
-                        <Pane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="245.0">
+                        <Pane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="245.0" style="-fx-background-color: lightgray;" stylesheets="@../stylesheet/bootstrap3.css">
                             <children>
                                 <Accordion layoutX="14.0" layoutY="14.0">
                                     <panes>
                                         <TitledPane animated="false" text="Daily Progress Report">
                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox layoutX="38.0" layoutY="-90.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Hyperlink fx:id="oprep" alignment="CENTER" layoutX="1.0" layoutY="-2.0" prefHeight="30.0" prefWidth="202.0" text="Operations Report" />
+                                          <Separator layoutX="2.0" layoutY="27.0" prefWidth="200.0" />
+                                          <Hyperlink fx:id="pob" alignment="CENTER" layoutX="71.0" layoutY="29.0" text="Personnel Onboard" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0" />
+                                       </children></AnchorPane>
                                             </content>
                                         </TitledPane>
-                                        <TitledPane animated="false" text="Personnel Onboard">
+                                        <TitledPane animated="false" text="Tasks">
                                             <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
                                             </content>
                                         </TitledPane>
+                              <TitledPane animated="false" text="ROVs">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
+                                 </content>
+                              </TitledPane>
+                              <TitledPane animated="false" text="Vessel">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
+                                 </content>
+                              </TitledPane>
                                         <TitledPane animated="false" text="Subtasks">
                                             <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" />
@@ -90,132 +119,16 @@
                                 </Accordion>
                             </children>
                         </Pane>
-                        <TabPane styleClass="action-btn" stylesheets="@../stylesheet/bootstrap3.css" tabClosingPolicy="UNAVAILABLE">
-                            <tabs>
-                                <Tab text="Log">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="559.0" prefWidth="792.0">
-                                            <children>
-                                                <TableView fx:id="logTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                    <columns>
-                                                        <TableColumn fx:id="from" maxWidth="72.0" minWidth="72.0" prefWidth="72.0" resizable="false" text="From">
-                                                        </TableColumn>
-                                                        <TableColumn fx:id="to" minWidth="72.0" prefWidth="72.0" resizable="false" text="To" />
-                                                        <TableColumn fx:id="desc" maxWidth="310.0" minWidth="310.0" prefWidth="310.0" resizable="false" text="Description" />
-                                                        <TableColumn fx:id="act" maxWidth="72.0" minWidth="72.0" prefWidth="72.0" resizable="false" text="ActID" />
-                                                        <TableColumn fx:id="cost" maxWidth="72.0" minWidth="72.0" prefWidth="72.0" resizable="false" text="CostCode" />
-                                                    </columns>
-                                                </TableView>
-                                                <Button fx:id="addButton" layoutX="548.0" layoutY="410.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="148.0" styleClass="primary" text="Add Entry" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0" />
-                                                <TextField fx:id="addFrom" layoutX="10.0" layoutY="408.0" maxWidth="72.0" minWidth="72.0" prefWidth="72.0" AnchorPane.bottomAnchor="11.0" />
-                                                <TextField fx:id="addTo" layoutX="82.0" layoutY="424.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="72.0" AnchorPane.bottomAnchor="11.0" />
-                                                <TextField fx:id="addDesc" layoutX="154.0" layoutY="424.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="310.0" AnchorPane.bottomAnchor="11.0" />
-                                                <TextField fx:id="addAct" layoutX="464.0" layoutY="424.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="72.0" AnchorPane.bottomAnchor="11.0" />
-                                                <TextField fx:id="addCost" layoutX="536.0" layoutY="424.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="72.0" AnchorPane.bottomAnchor="11.0" />
-                                            </children>
-                                        </AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="General">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0">
-                                 <children>
-                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="456.0" prefWidth="781.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                       <children>
-                                          <AnchorPane layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="321.0" AnchorPane.topAnchor="14.0">
-                                             <children>
-                                                <Label text="Customer Representative:">
-                                                   <font>
-                                                      <Font size="18.0" />
-                                                   </font>
-                                                </Label>
-                                                <TextField layoutX="224.0" layoutY="1.0" prefWidth="202.0" />
-                                             </children>
-                                          </AnchorPane>
-                                          <Label layoutX="42.0" layoutY="54.0" text="Offshore Manager:" textAlignment="CENTER" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="54.0">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField layoutX="238.0" layoutY="53.0" prefWidth="202.0" />
-                                          <Label layoutX="81.0" layoutY="93.0" text="Location:" textAlignment="CENTER">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <ComboBox layoutX="238.0" layoutY="91.0" prefWidth="202.0" styleClass="" stylesheets="@../stylesheet/bootstrap3.css">
-                                              <items>
-                                              </items>
-                                          </ComboBox>
-                                          <Separator layoutY="126.0" prefHeight="18.0" prefWidth="781.0" />
-                                          <Label layoutX="71.0" layoutY="144.0" text="Fuel Status:" textAlignment="CENTER">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="69.0" layoutY="196.0" text="Lube Status:" textAlignment="CENTER">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Label>
-                                       </children></AnchorPane>
-                                 </children></AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="Comments">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea layoutX="14.0" layoutY="14.0" prefHeight="442.0" prefWidth="755.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                                 </children></AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="Customer Comments">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea prefHeight="442.0" prefWidth="755.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                                 </children></AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="Program Next">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea prefHeight="442.0" prefWidth="755.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                                 </children></AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="Data Trans.">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea prefHeight="442.0" prefWidth="755.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                                 </children></AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="ROV Logs">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
-                                </Tab>
-                                <Tab text="HSE Summary">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" stylesheets="@../stylesheet/bootstrap3.css" />
-                                    </content>
-                                </Tab>
-                                <Tab text="Equipment">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
-                                </Tab>
-                                <Tab text="Notes">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
-                                </Tab>
-                            </tabs>
-                        </TabPane>
+                  <ScrollPane>
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane fx:id="insertionPoint" prefHeight="482.0" prefWidth="772.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+
                     </items>
                 </SplitPane>
             </children>

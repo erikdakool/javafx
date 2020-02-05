@@ -6,16 +6,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.openjfx.controller._partialViewController;
 
+import java.net.URL;
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/report_view.fxml"));
+        FXMLLoader outerLoader = new FXMLLoader(getClass().getResource("view/report_view.fxml"));
 
-        Scene scene = new Scene(root);
+        String path = _partialViewController.getPath();
+        URL inner = getClass().getResource(path);
+
+        Scene scene = new Scene(outerLoader.load());
          //scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        FXMLLoader innerLoader = new FXMLLoader(inner);
+        innerLoader.setRoot(outerLoader.getNamespace().get("insertionPoint"));
+        innerLoader.load();
 
         stage.setTitle("DPR Software Prototype");
         stage.getIcons().add(new Image(MainApp.class.getResourceAsStream( "image/deepoceanicon.png" )));
@@ -23,14 +31,14 @@ public class MainApp extends Application {
         stage.show();
     }
 
-/*    @Override
+   /* @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader outerLoader = new FXMLLoader(getClass().getResource("outer.fxml"));
+        FXMLLoader outerLoader = new FXMLLoader(getClass().getResource("view/report_view.fxml"));
 
         Scene scene = new Scene(outerLoader.load());
 
         //URL inner = getClass().getResource("inner1.fxml");
-        URL inner = getClass().getResource("inner2.fxml");
+        URL inner = getClass().getResource("view/inner2.fxml");
 
         FXMLLoader innerLoader = new FXMLLoader(inner);
 
