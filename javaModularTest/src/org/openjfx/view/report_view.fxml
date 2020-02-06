@@ -3,11 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
@@ -19,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="616.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller._partialViewController">
+<StackPane prefHeight="720" prefWidth="1280" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller._partialViewController">
     <children>
         <VBox prefHeight="600.0" prefWidth="900.0">
             <children>
@@ -27,7 +29,7 @@
                     <children>
                         <SplitPane prefHeight="112.0" prefWidth="898.0" stylesheets="@../stylesheet/bootstrap3.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <items>
-                        <AnchorPane style="-fx-background-color: lightgray;" stylesheets="@../stylesheet/bootstrap3.css">
+                        <AnchorPane style="-fx-background-color: white;" stylesheets="@../stylesheet/bootstrap3.css">
                            <children>
                                         <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="962.0" layoutY="30.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="58.0" styleClass="success" stylesheets="@../stylesheet/bootstrap3.css" text="Sync" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0">
                                             <tooltip>
@@ -72,6 +74,8 @@
                                             </items>
                                         </MenuButton>
                                         <Button layoutX="333.0" layoutY="64.0" mnemonicParsing="false" styleClass="warning" text="Execute" AnchorPane.bottomAnchor="14.0" />
+                              <ProgressIndicator layoutX="1062.0" layoutY="29.0" styleClass="progress-bar" stylesheets="@../stylesheet/bootstrap3.css" visible="false" AnchorPane.rightAnchor="84.0" />
+                              <CheckBox contentDisplay="BOTTOM" disable="true" layoutX="1062.0" layoutY="86.0" mnemonicParsing="false" stylesheets="@../stylesheet/bootstrap3.css" text="Connection to Cloud" AnchorPane.rightAnchor="7.0" />
                            </children>
                         </AnchorPane>
                             </items>

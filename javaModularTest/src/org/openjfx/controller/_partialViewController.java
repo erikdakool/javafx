@@ -4,6 +4,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Timer;
+
 public class _partialViewController {
     private static String path = "view/_logPartialView.fxml";
     @FXML
@@ -18,6 +20,7 @@ public class _partialViewController {
     private Hyperlink oprep;
     @FXML
     private AnchorPane insertionPoint;
+
 
     public void initialize() {
         //TITLE

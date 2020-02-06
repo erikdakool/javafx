@@ -9,19 +9,46 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import org.openjfx.model.EquipmentModel;
 import org.openjfx.model.LogModel;
 
 
 public class ReportController {
-
+    //LOG CONTROLS
     @FXML
     private TextField addFrom;
-    public TextField addTo;
-    public TextArea addDesc;
-    public TextField addAct;
-    public TextField addCost;
-    public Button addButton;
+    @FXML
+    private TextField addTo;
+    @FXML
+    private TextArea addDesc;
+    @FXML
+    private TextField addAct;
+    @FXML
+    private TextField addCost;
+    @FXML
+    private Button addButton;
 
+    //EQUIPMENT CONTROLS
+    @FXML
+    private TextField addEDesc;
+    @FXML
+    private TextField addEQuant;
+    @FXML
+    private DatePicker addEOn;
+    @FXML
+    private DatePicker addEOff;
+    @FXML
+    private ComboBox addERate;
+    @FXML
+    private ComboBox addEOwner;
+    @FXML
+    private ComboBox addETask;
+    @FXML
+    private Button addEButton;
+    @FXML
+    private AnchorPane equipControls;
+
+    //LOG TABLE
     @FXML
     private TableColumn<LogModel, String> from;
     @FXML
@@ -32,43 +59,90 @@ public class ReportController {
     private TableColumn<LogModel, String> act;
     @FXML
     private TableColumn<LogModel, String> cost;
-
     @FXML
     private TableView<LogModel> logTable = new TableView<LogModel>();
-    private final ObservableList<LogModel> data = FXCollections.observableArrayList();
+    private final ObservableList<LogModel> logData = FXCollections.observableArrayList();
+
+    //EQUIPMENT TABLE
+    @FXML
+    private TableColumn<EquipmentModel, String> equipDesc;
+    @FXML
+    private TableColumn<EquipmentModel, String> equipQuant;
+    @FXML
+    private TableColumn<EquipmentModel, String> equipOwner;
+    @FXML
+    private TableColumn<EquipmentModel, String> equipOn;
+    @FXML
+    private TableColumn<EquipmentModel, String> equipOff;
+    @FXML
+    private TableColumn<EquipmentModel, String> equipRate;
+    @FXML
+    private TableColumn<EquipmentModel, String> taskNum;
+    @FXML
+    private TableView<EquipmentModel> equipTable = new TableView<EquipmentModel>();
+    private final ObservableList<EquipmentModel> equipData = FXCollections.observableArrayList();
+
 
     public void initialize() {
+        //LOG TABLE
         from.setCellValueFactory(new PropertyValueFactory<>("from"));
         to.setCellValueFactory(new PropertyValueFactory<>("to"));
         desc.setCellValueFactory(new PropertyValueFactory<>("description"));
         act.setCellValueFactory(new PropertyValueFactory<>("actID"));
         cost.setCellValueFactory(new PropertyValueFactory<>("costCode"));
-
-        logTable.setItems(data);
+        logTable.setItems(logData);
 
         addButton.setOnMouseClicked(mouseEvent -> {
             addLogEntry();
             System.out.println("Adding to table!");
-            logTable.setItems(data);
+            logTable.setItems(logData);
+        });
+        //EQUIPMENT TABLE
+        equipDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        equipQuant.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        equipOwner.setCellValueFactory(new PropertyValueFactory<>("owner"));
+        equipOn.setCellValueFactory(new PropertyValueFactory<>("dateOn"));
+        equipOff.setCellValueFactory(new PropertyValueFactory<>("dateOff"));
+        equipRate.setCellValueFactory(new PropertyValueFactory<>("rate"));
+        taskNum.setCellValueFactory(new PropertyValueFactory<>("taskNumber"));
+        equipTable.setItems(equipData);
+
+        addEButton.setOnMouseClicked(mouseEvent -> {
+            AddEquipmentEntry();
+            System.out.println("Adding to table!");
+            equipTable.setItems(equipData);
         });
     }
+    //LOG CONTROLS TO MODEL LIST
     public void addLogEntry() {
-        data.add(new LogModel(
+        logData.add(new LogModel(
            addFrom.getText(),
            addTo.getText(),
            addDesc.getText(),
            addAct.getText(),
            addCost.getText()
         ));
-        clearAddLogInputs();
-    }
-
-    public void clearAddLogInputs() {
         addFrom.clear();
         addTo.clear();
         addDesc.clear();
         addAct.clear();
         addCost.clear();
     }
+
+    //EQUIPMENT CONTROLS TO EQUIPMENT LIST
+    public void AddEquipmentEntry() {
+        equipData.add(new EquipmentModel(
+                addEDesc.getText(),
+                addEQuant.getText(),
+                addEOwner.getValue().toString(),
+                addEOn.getValue().toString(),
+                addEOff.getValue().toString(),
+                addERate.getValue().toString(),
+                addETask.getValue().toString()
+        ));
+        addEQuant.clear();
+        addEDesc.clear();
+    }
+
 
 }
